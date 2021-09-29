@@ -9,12 +9,17 @@ with open(filename, "r") as f:
         try:
             x, y = i.split("X")[1].split("Y")
             x = float(x)
-            y = float(y)
+            try:
+                y = float(y)
+            except ValueError:
+                y = y.split("T")[1]
+                y= float(y)
             #přidání hodnoty k Y, pokud je x>50
             if x > 50:
                 y = y +10
             x = str(x)
             y = str(y)
+            print(x, y)
             #ignorování prvních pár řádků bez souřadnic
         except IndexError:
             pass
